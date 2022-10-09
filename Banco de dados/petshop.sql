@@ -7,7 +7,7 @@ dtNascimento date,
 cpf char(11),
 endereco varchar(200),
 tel varchar(11),
-cdFunc int
+cdFunc int(4) zerofill primary key auto_increment
 );
 insert into cadFuncionarios
 values('Cleyton','20020923','12345678901','Rua das Camélias','40028922',01),
@@ -17,7 +17,7 @@ values('Cleyton','20020923','12345678901','Rua das Camélias','40028922',01),
 select*from cadFuncionarios;
 
 create table cadProdutos(
-cdProd int,
+cdProd int(4) zerofill primary key auto_increment,
 nmProd varchar(50),
 valor decimal (18,2),
 Qtd int,
@@ -32,7 +32,7 @@ values(01, 'Shampoo de cachorro', 10,'12', 'Litros', 'Milas Kei'),
 select*from cadProdutos;
 
 create table cadFornecedor(
-cdForn int,
+cdForn int(4) zerofill primary key auto_increment,
 cnpj varchar (20),
 nmForn varchar(100),
 prodForn varchar(100),
@@ -47,7 +47,7 @@ values(01,'1234567891234','Ração dukão','Ração de cachorro','Rua das cabras
 select*from cadFornecedor;
 
 create table agendamento(
-cdAgendamento int,
+cdAgendamento int(4) zerofill primary key auto_increment,
 nmResponsavel varchar (100),
 nmAnimal varchar(100),
 tpServiço varchar(30),

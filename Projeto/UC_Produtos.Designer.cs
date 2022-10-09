@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEnviar = new System.Windows.Forms.Button();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.lbCodigo = new System.Windows.Forms.Label();
@@ -63,15 +63,16 @@
             this.txtNome.Size = new System.Drawing.Size(137, 23);
             this.txtNome.TabIndex = 1;
             // 
-            // button1
+            // btnEnviar
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.Location = new System.Drawing.Point(597, 62);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Enviar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnEnviar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEnviar.Location = new System.Drawing.Point(597, 62);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(75, 25);
+            this.btnEnviar.TabIndex = 2;
+            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
             // 
             // dgvProdutos
             // 
@@ -104,9 +105,9 @@
             this.lbCodigo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbCodigo.Location = new System.Drawing.Point(153, 10);
             this.lbCodigo.Name = "lbCodigo";
-            this.lbCodigo.Size = new System.Drawing.Size(21, 17);
+            this.lbCodigo.Size = new System.Drawing.Size(99, 17);
             this.lbCodigo.TabIndex = 0;
-            this.lbCodigo.Text = "12";
+            this.lbCodigo.Text = "Auto incremento";
             // 
             // label4
             // 
@@ -186,7 +187,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Controls.Add(this.dgvProdutos);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.txtMedida);
             this.Controls.Add(this.txtQtd);
@@ -212,7 +213,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.DataGridView dgvProdutos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbCodigo;

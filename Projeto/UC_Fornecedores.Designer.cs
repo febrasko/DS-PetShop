@@ -36,12 +36,12 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbCodigo = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtProdFornecidos = new System.Windows.Forms.RichTextBox();
             this.txtEndereco = new System.Windows.Forms.RichTextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,30 +61,31 @@
             // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(43, 305);
+            this.btnEnviar.Location = new System.Drawing.Point(30, 305);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(75, 25);
             this.btnEnviar.TabIndex = 28;
             this.btnEnviar.Text = "Enviar";
             this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(105, 197);
+            this.txtTelefone.Location = new System.Drawing.Point(92, 197);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(99, 23);
             this.txtTelefone.TabIndex = 24;
             // 
             // txtCNPJ
             // 
-            this.txtCNPJ.Location = new System.Drawing.Point(104, 100);
+            this.txtCNPJ.Location = new System.Drawing.Point(91, 100);
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.Size = new System.Drawing.Size(100, 23);
             this.txtCNPJ.TabIndex = 26;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(18, 140);
+            this.label6.Location = new System.Drawing.Point(5, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 34);
             this.label6.TabIndex = 17;
@@ -93,7 +94,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(104, 72);
+            this.txtNome.Location = new System.Drawing.Point(91, 72);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(171, 23);
             this.txtNome.TabIndex = 27;
@@ -101,7 +102,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 235);
+            this.label5.Location = new System.Drawing.Point(30, 235);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 15);
             this.label5.TabIndex = 18;
@@ -110,26 +111,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 201);
+            this.label3.Location = new System.Drawing.Point(35, 201);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 15);
             this.label3.TabIndex = 20;
             this.label3.Text = "Telefone";
             // 
-            // lbCodigo
-            // 
-            this.lbCodigo.AutoSize = true;
-            this.lbCodigo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbCodigo.Location = new System.Drawing.Point(105, 49);
-            this.lbCodigo.Name = "lbCodigo";
-            this.lbCodigo.Size = new System.Drawing.Size(21, 17);
-            this.lbCodigo.TabIndex = 19;
-            this.lbCodigo.Text = "12";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(65, 103);
+            this.label4.Location = new System.Drawing.Point(52, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 15);
             this.label4.TabIndex = 21;
@@ -138,7 +129,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 51);
+            this.label2.Location = new System.Drawing.Point(34, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 15);
             this.label2.TabIndex = 22;
@@ -147,7 +138,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 75);
+            this.label1.Location = new System.Drawing.Point(46, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 15);
             this.label1.TabIndex = 23;
@@ -155,7 +146,7 @@
             // 
             // txtProdFornecidos
             // 
-            this.txtProdFornecidos.Location = new System.Drawing.Point(104, 138);
+            this.txtProdFornecidos.Location = new System.Drawing.Point(91, 138);
             this.txtProdFornecidos.Name = "txtProdFornecidos";
             this.txtProdFornecidos.Size = new System.Drawing.Size(171, 53);
             this.txtProdFornecidos.TabIndex = 30;
@@ -163,17 +154,28 @@
             // 
             // txtEndereco
             // 
-            this.txtEndereco.Location = new System.Drawing.Point(104, 235);
+            this.txtEndereco.Location = new System.Drawing.Point(91, 235);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(171, 58);
             this.txtEndereco.TabIndex = 30;
             this.txtEndereco.Text = "";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label7.Location = new System.Drawing.Point(92, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 17);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Auto incremento";
             // 
             // UC_Fornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtEndereco);
             this.Controls.Add(this.txtProdFornecidos);
             this.Controls.Add(this.dgvFornecedores);
@@ -184,7 +186,6 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lbCodigo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -207,11 +208,11 @@
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lbCodigo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox txtProdFornecidos;
         private System.Windows.Forms.RichTextBox txtEndereco;
+        private System.Windows.Forms.Label label7;
     }
 }
