@@ -1,5 +1,4 @@
 # Pet shop – desktop (Leandro, José e Cleyton (2º M))
-
 # Esse sistema é para a organização, agilização e melhora de desempenho em uma loja de petshop.
 
 # Dono, cadastro e consulta funcionário, Produtos, Fornecedor, Agendamento
