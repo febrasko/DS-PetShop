@@ -15,20 +15,10 @@ namespace PetShop
         {
             InitializeComponent();
         }
-
+        Util util = new Util();
         private void UC_Funcionarios_Load(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
-            MySqlConnection msconnection = new MySqlConnection(conexao);
-            msconnection.Open();
-            MySqlCommand mscommand = new MySqlCommand();
-            mscommand.CommandText = "select * from cadFuncionarios";
-            mscommand.Connection = msconnection;
-            MySqlDataAdapter msdAdapter = new MySqlDataAdapter(mscommand);
-            msdAdapter.Fill(dt);
-            dgvFuncionarios.DataSource = dt;
-            msconnection.Close();
+            util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
@@ -37,25 +27,33 @@ namespace PetShop
             {
                 MessageBox.Show("Preencha todos os campos!");
             }
-            /*else
+            else
             {
+                // Abrindo conexão
                 string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
                 MySqlConnection msconnection = new MySqlConnection(conexao);
                 msconnection.Open();
+
+                // Executando comando insert
                 MySqlCommand mscommand = new MySqlCommand();
                 mscommand.Connection = msconnection;
-                mscommand.CommandText = $"insert into cadfuncionarios values ('{txtNome.Text}', '{txtNascimento.Text}', '{txtCPF.Text}', '{txtEndereco.Text}', '{txtTelefone.Text}', 0)";
+                mscommand.CommandText = $"INSERT INTO cadfuncionarios " +
+                    $"(nmFunc, dtNascimento, cpf, endereco, tel) VALUES " +
+                    $"(@nome, @nascimento, @cpf, @endereco, @tel)";
+                mscommand.Parameters.AddWithValue("@nome", txtNome.Text);
+                mscommand.Parameters.AddWithValue("@cpf", txtCPF.Text);
+                mscommand.Parameters.AddWithValue("@nascimento", txtNascimento.Text);
+                mscommand.Parameters.AddWithValue("@tel", txtTelefone.Text);
+                mscommand.Parameters.AddWithValue("@endereco", txtEndereco.Text);
+                mscommand.Prepare();
                 mscommand.ExecuteNonQuery();
-
-                DataTable dt = new DataTable();
-                mscommand.CommandText = "select * from cadfuncionarios";
-                mscommand.Connection = msconnection;
-                MySqlDataAdapter msdAdapter = new MySqlDataAdapter(mscommand);
-                msdAdapter.Fill(dt);
-                dgvFuncionarios.DataSource = dt;
-
+                
+                // Fechando conexão
                 msconnection.Close();
-            }*/
+
+                // Atualizando datagridview
+                util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
+            }
         }
     }
 }

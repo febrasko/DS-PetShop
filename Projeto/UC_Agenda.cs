@@ -15,20 +15,10 @@ namespace PetShop
         {
             InitializeComponent();
         }
-
+        Util util = new Util(); 
         private void UC_Agenda_Load(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
-            MySqlConnection msconnection = new MySqlConnection(conexao);
-            msconnection.Open();
-            MySqlCommand mscommand = new MySqlCommand();
-            mscommand.CommandText = "select * from agendamento";
-            mscommand.Connection = msconnection;
-            MySqlDataAdapter msdAdapter = new MySqlDataAdapter(mscommand);
-            msdAdapter.Fill(dt);
-            dgvAgenda.DataSource = dt;
-            msconnection.Close();
+            util.abrirDgv(dgvAgenda, "agendamento");
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
@@ -37,25 +27,28 @@ namespace PetShop
             {
                 MessageBox.Show("Preencha todos os campos!");
             }
-            /*else
+            else
             {
                 string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
                 MySqlConnection msconnection = new MySqlConnection(conexao);
                 msconnection.Open();
+
                 MySqlCommand mscommand = new MySqlCommand();
                 mscommand.Connection = msconnection;
-                mscommand.CommandText = $"insert into cadfuncionarios values ('{txtNome.Text}', '{txtNascimento.Text}', '{txtCPF.Text}', '{txtEndereco.Text}', '{txtTelefone.Text}', 0)";
+                mscommand.CommandText = $"INSERT INTO agendamento VALUES " +
+                    $"(0, @nomeres, @nomeanimal, @tipo, @data, @obs)";
+                mscommand.Parameters.AddWithValue("@nomeres", txtNomeResp.Text);
+                mscommand.Parameters.AddWithValue("@nomeanimal", txtNomeAnimal.Text);
+                mscommand.Parameters.AddWithValue("@tipo", cbTipo.Text);
+                mscommand.Parameters.AddWithValue("@data", txtData.Text);
+                mscommand.Parameters.AddWithValue("@obs", txtObs.Text);
+                mscommand.Prepare();
                 mscommand.ExecuteNonQuery();
 
-                DataTable dt = new DataTable();
-                mscommand.CommandText = "select * from cadfuncionarios";
-                mscommand.Connection = msconnection;
-                MySqlDataAdapter msdAdapter = new MySqlDataAdapter(mscommand);
-                msdAdapter.Fill(dt);
-                dgvFuncionarios.DataSource = dt;
+                util.abrirDgv(dgvAgenda, "agendamento");
 
                 msconnection.Close();
-            }*/
+            }
         }
     }
 }

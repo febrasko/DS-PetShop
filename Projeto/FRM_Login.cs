@@ -26,7 +26,7 @@ namespace PetShop
             else if (txtUser.Text == "ETEC" && txtPass.Text == "etec")
             {
                 FRM_Principal frm = new FRM_Principal();
-                this.Hide();
+                Hide();
                 frm.Show();
             }
             else
