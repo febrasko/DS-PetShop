@@ -58,5 +58,19 @@ namespace PetShop
                 util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
             }
         }
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
+            MySqlConnection msconnection = new MySqlConnection(conexao);
+            msconnection.Open();
+            MySqlCommand mscommand = new MySqlCommand();
+            DataTable dt = new DataTable();
+            mscommand.CommandText = "select * from cadfuncionarios where nmFunc LIKE '%" + txtPesquisa.Text + "%'";
+            mscommand.Connection = msconnection;
+            MySqlDataAdapter msdAdapter = new MySqlDataAdapter(mscommand);
+            msdAdapter.Fill(dt);
+            dgvFuncionarios.DataSource = dt;
+        }
     }
 }
