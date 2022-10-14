@@ -23,12 +23,15 @@ namespace PetShop
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text == "" || txtCPF.Text == "" || txtNascimento.Text == "" || txtTelefone.Text == "" || txtEndereco.Text == "")
+            if (txtNome.Text == "" || txtCPF.Text == "" || dtpNascimento.Text == "" || txtTelefone.Text == "" || txtEndereco.Text == "")
             {
                 MessageBox.Show("Preencha todos os campos!");
             }
             else
             {
+                // Convertendo a data inserida para o formato do MySQL
+                string nascimento = dtpNascimento.Value.ToString("yyyy-MM-dd");
+
                 // Abrindo conexão
                 string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
                 MySqlConnection msconnection = new MySqlConnection(conexao);
@@ -42,7 +45,7 @@ namespace PetShop
                     $"(@nome, @nascimento, @cpf, @endereco, @tel)";
                 mscommand.Parameters.AddWithValue("@nome", txtNome.Text);
                 mscommand.Parameters.AddWithValue("@cpf", txtCPF.Text);
-                mscommand.Parameters.AddWithValue("@nascimento", txtNascimento.Text);
+                mscommand.Parameters.AddWithValue("@nascimento", nascimento);
                 mscommand.Parameters.AddWithValue("@tel", txtTelefone.Text);
                 mscommand.Parameters.AddWithValue("@endereco", txtEndereco.Text);
                 mscommand.Prepare();

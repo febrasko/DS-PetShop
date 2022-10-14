@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtObs = new System.Windows.Forms.RichTextBox();
             this.btnEnviar = new System.Windows.Forms.Button();
             this.txtNomeAnimal = new System.Windows.Forms.TextBox();
@@ -40,7 +41,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cbTipo = new System.Windows.Forms.ComboBox();
             this.dgvAgenda = new System.Windows.Forms.DataGridView();
-            this.txtData = new System.Windows.Forms.TextBox();
+            this.dtpData = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             // 
             this.txtNomeAnimal.Location = new System.Drawing.Point(149, 107);
             this.txtNomeAnimal.Name = "txtNomeAnimal";
-            this.txtNomeAnimal.Size = new System.Drawing.Size(100, 23);
+            this.txtNomeAnimal.Size = new System.Drawing.Size(121, 23);
             this.txtNomeAnimal.TabIndex = 39;
             // 
             // txtNomeResp
@@ -147,6 +148,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAgenda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAgenda.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvAgenda.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvAgenda.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -162,28 +164,34 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAgenda.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAgenda.RowHeadersVisible = false;
+            this.dgvAgenda.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAgenda.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvAgenda.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAgenda.RowTemplate.Height = 25;
+            this.dgvAgenda.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAgenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAgenda.Size = new System.Drawing.Size(454, 336);
             this.dgvAgenda.TabIndex = 47;
             // 
-            // txtData
+            // dtpData
             // 
-            this.txtData.Location = new System.Drawing.Point(149, 164);
-            this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(100, 23);
-            this.txtData.TabIndex = 39;
+            this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpData.Location = new System.Drawing.Point(149, 166);
+            this.dtpData.Name = "dtpData";
+            this.dtpData.Size = new System.Drawing.Size(121, 23);
+            this.dtpData.TabIndex = 48;
             // 
             // UC_Agenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Controls.Add(this.dtpData);
             this.Controls.Add(this.dgvAgenda);
             this.Controls.Add(this.cbTipo);
             this.Controls.Add(this.txtObs);
             this.Controls.Add(this.btnEnviar);
-            this.Controls.Add(this.txtData);
             this.Controls.Add(this.txtNomeAnimal);
             this.Controls.Add(this.txtNomeResp);
             this.Controls.Add(this.label6);
@@ -213,6 +221,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbTipo;
         private System.Windows.Forms.DataGridView dgvAgenda;
-        private System.Windows.Forms.TextBox txtData;
+        private System.Windows.Forms.DateTimePicker dtpData;
     }
 }

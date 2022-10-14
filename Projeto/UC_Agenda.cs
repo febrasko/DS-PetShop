@@ -23,12 +23,14 @@ namespace PetShop
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            if (txtNomeResp.Text == "" || txtNomeAnimal.Text == "" || cbTipo.Text == "" || txtData.Text == "" || txtObs.Text == "")
+            if (txtNomeResp.Text == "" || txtNomeAnimal.Text == "" || cbTipo.Text == "" || dtpData.Text == "" || txtObs.Text == "")
             {
                 MessageBox.Show("Preencha todos os campos!");
             }
             else
             {
+                string data = dtpData.Value.ToString("yyyy-MM-dd");
+
                 string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
                 MySqlConnection msconnection = new MySqlConnection(conexao);
                 msconnection.Open();
@@ -40,7 +42,7 @@ namespace PetShop
                 mscommand.Parameters.AddWithValue("@nomeres", txtNomeResp.Text);
                 mscommand.Parameters.AddWithValue("@nomeanimal", txtNomeAnimal.Text);
                 mscommand.Parameters.AddWithValue("@tipo", cbTipo.Text);
-                mscommand.Parameters.AddWithValue("@data", txtData.Text);
+                mscommand.Parameters.AddWithValue("@data", data);
                 mscommand.Parameters.AddWithValue("@obs", txtObs.Text);
                 mscommand.Prepare();
                 mscommand.ExecuteNonQuery();
