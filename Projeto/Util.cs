@@ -16,7 +16,7 @@ namespace PetShop
             msconnection.Open();
             MySqlCommand mscommand = new MySqlCommand();
             DataTable dt = new DataTable();
-            mscommand.CommandText = "select * from " + tabela;
+            mscommand.CommandText = $"select * from {tabela}";
             mscommand.Connection = msconnection;
             MySqlDataAdapter msdAdapter = new MySqlDataAdapter(mscommand);
             msdAdapter.Fill(dt);

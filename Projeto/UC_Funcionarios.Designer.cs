@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsMenuItemExcluir = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEnviar = new System.Windows.Forms.Button();
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.txtCPF = new System.Windows.Forms.TextBox();
@@ -45,7 +48,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvFuncionarios
@@ -68,6 +73,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFuncionarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFuncionarios.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvFuncionarios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvFuncionarios.Location = new System.Drawing.Point(286, 47);
             this.dgvFuncionarios.Margin = new System.Windows.Forms.Padding(8, 3, 8, 3);
@@ -89,11 +95,25 @@
             this.dgvFuncionarios.CurrentCellChanged += new System.EventHandler(this.dgvFuncionarios_CurrentCellChanged);
             this.dgvFuncionarios.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvFuncionarios_DataBindingComplete);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuItemExcluir});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(110, 26);
+            // 
+            // tsMenuItemExcluir
+            // 
+            this.tsMenuItemExcluir.Name = "tsMenuItemExcluir";
+            this.tsMenuItemExcluir.Size = new System.Drawing.Size(109, 22);
+            this.tsMenuItemExcluir.Text = "Excluir";
+            this.tsMenuItemExcluir.Click += new System.EventHandler(this.tsMenuItemExcluir_Click);
+            // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(44, 262);
+            this.btnEnviar.Location = new System.Drawing.Point(28, 247);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(75, 25);
+            this.btnEnviar.Size = new System.Drawing.Size(75, 23);
             this.btnEnviar.TabIndex = 6;
             this.btnEnviar.Text = "Enviar";
             this.btnEnviar.UseVisualStyleBackColor = true;
@@ -101,7 +121,7 @@
             // 
             // txtEndereco
             // 
-            this.txtEndereco.Location = new System.Drawing.Point(90, 205);
+            this.txtEndereco.Location = new System.Drawing.Point(90, 190);
             this.txtEndereco.Multiline = true;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(149, 51);
@@ -109,7 +129,7 @@
             // 
             // txtCPF
             // 
-            this.txtCPF.Location = new System.Drawing.Point(90, 120);
+            this.txtCPF.Location = new System.Drawing.Point(90, 105);
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(100, 23);
             this.txtCPF.TabIndex = 2;
@@ -117,7 +137,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 151);
+            this.label6.Location = new System.Drawing.Point(13, 136);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 15);
             this.label6.TabIndex = 4;
@@ -125,7 +145,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(90, 92);
+            this.txtNome.Location = new System.Drawing.Point(90, 77);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 23);
             this.txtNome.TabIndex = 1;
@@ -133,7 +153,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 208);
+            this.label5.Location = new System.Drawing.Point(28, 193);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 15);
             this.label5.TabIndex = 5;
@@ -142,7 +162,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 123);
+            this.label4.Location = new System.Drawing.Point(56, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 15);
             this.label4.TabIndex = 7;
@@ -151,7 +171,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 95);
+            this.label1.Location = new System.Drawing.Point(44, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 15);
             this.label1.TabIndex = 4;
@@ -160,7 +180,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 180);
+            this.label7.Location = new System.Drawing.Point(33, 165);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 15);
             this.label7.TabIndex = 4;
@@ -168,7 +188,7 @@
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(90, 177);
+            this.txtTelefone.Location = new System.Drawing.Point(90, 162);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(102, 23);
             this.txtTelefone.TabIndex = 4;
@@ -176,7 +196,7 @@
             // dtpNascimento
             // 
             this.dtpNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNascimento.Location = new System.Drawing.Point(90, 148);
+            this.dtpNascimento.Location = new System.Drawing.Point(90, 133);
             this.dtpNascimento.Name = "dtpNascimento";
             this.dtpNascimento.Size = new System.Drawing.Size(102, 23);
             this.dtpNascimento.TabIndex = 3;
@@ -200,19 +220,31 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(125, 262);
+            this.btnLimpar.Location = new System.Drawing.Point(109, 247);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(75, 25);
+            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 7;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(190, 247);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 9;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Visible = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // UC_Funcionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.dtpNascimento);
             this.Controls.Add(this.dgvFuncionarios);
             this.Controls.Add(this.btnLimpar);
@@ -232,6 +264,7 @@
             this.Size = new System.Drawing.Size(793, 378);
             this.Load += new System.EventHandler(this.UC_Funcionarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +287,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsMenuItemExcluir;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }

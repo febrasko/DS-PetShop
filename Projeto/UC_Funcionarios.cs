@@ -19,12 +19,31 @@ namespace PetShop
         // Referenciando o arquivo onde tem a função abrirDgv()
         Util util = new Util();
 
+        // Código do registro selecionado
+        private int? cdSelecionado = null;
+
         private void UC_Funcionarios_Load(object sender, EventArgs e)
         {
             util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
+            dgvFuncionarios.Columns[0].HeaderText = "NOME";
+            dgvFuncionarios.Columns[1].HeaderText = "NASCIMENTO";
+            dgvFuncionarios.Columns[2].HeaderText = "CPF";
+            dgvFuncionarios.Columns[3].HeaderText = "ENDEREÇO";
+            dgvFuncionarios.Columns[4].HeaderText = "CONTATO";
+            dgvFuncionarios.Columns[5].HeaderText = "ID";
             dgvFuncionarios.ClearSelection();
         }
-
+        private void limparCampos()
+        {
+            // Função para limpar todos os textboxes e esconder o botão de excluir
+            txtNome.Text = "";
+            txtCPF.Text = "";
+            dtpNascimento.Text = default;
+            txtTelefone.Text = "";
+            txtEndereco.Text = "";
+            cdSelecionado = null;
+            btnExcluir.Visible = false;
+        }
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             if (txtNome.Text == "" || txtCPF.Text == "" || dtpNascimento.Text == "" || txtTelefone.Text == "" || txtEndereco.Text == "")
@@ -46,8 +65,8 @@ namespace PetShop
                 MySqlCommand mscommand = new MySqlCommand();
                 mscommand.Connection = msconnection;
                 mscommand.CommandText = $"INSERT INTO cadfuncionarios " +
-                    $"(nmFunc, dtNascimento, cpf, endereco, tel) VALUES " +
-                    $"(@nome, @nascimento, @cpf, @endereco, @tel)";
+                                        $"(nmFunc, dtNascimento, cpf, endereco, tel) VALUES " +
+                                        $"(@nome, @nascimento, @cpf, @endereco, @tel)";
                 mscommand.Parameters.AddWithValue("@nome", txtNome.Text);
                 mscommand.Parameters.AddWithValue("@cpf", txtCPF.Text);
                 mscommand.Parameters.AddWithValue("@nascimento", nascimento);
@@ -60,11 +79,7 @@ namespace PetShop
                 msconnection.Close();
 
                 // Limpando os textboxes
-                txtNome.Text = "";
-                txtCPF.Text = "";
-                dtpNascimento.Text = default;
-                txtTelefone.Text = "";
-                txtEndereco.Text = "";
+                limparCampos();
 
                 // Atualizando datagridview
                 util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
@@ -82,12 +97,12 @@ namespace PetShop
                 MySqlCommand mscommand = new MySqlCommand();
                 mscommand.Connection = msconnection;
                 mscommand.CommandText = $"UPDATE cadfuncionarios SET " +
-                    $"nmFunc = @nome, " +
-                    $"dtNascimento = @nascimento, " +
-                    $"cpf = @cpf, " +
-                    $"endereco = @endereco, " +
-                    $"tel = @tel " +
-                    $"WHERE cdFunc = @cd";
+                                        $"nmFunc = @nome, " +
+                                        $"dtNascimento = @nascimento, " +
+                                        $"cpf = @cpf, " +
+                                        $"endereco = @endereco, " +
+                                        $"tel = @tel " +
+                                        $"WHERE cdFunc = @cd";
                 mscommand.Parameters.AddWithValue("@nome", txtNome.Text);
                 mscommand.Parameters.AddWithValue("@cpf", txtCPF.Text);
                 mscommand.Parameters.AddWithValue("@nascimento", nascimento);
@@ -99,11 +114,7 @@ namespace PetShop
 
                 msconnection.Close();
 
-                txtNome.Text = "";
-                txtCPF.Text = "";
-                dtpNascimento.Text = default;
-                txtTelefone.Text = "";
-                txtEndereco.Text = "";
+                limparCampos();
 
                 util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
             }
@@ -130,7 +141,6 @@ namespace PetShop
             dgvFuncionarios.ClearSelection();
         }
 
-        private int? cdSelecionado = null;
         private void dgvFuncionarios_CurrentCellChanged(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection linha_selecionada = dgvFuncionarios.SelectedRows;
@@ -142,18 +152,62 @@ namespace PetShop
                 txtEndereco.Text = campo.Cells[3].Value.ToString();
                 txtTelefone.Text = campo.Cells[4].Value.ToString();
                 cdSelecionado = Convert.ToInt32(campo.Cells[5].Value);
+                btnExcluir.Visible = true;
             }
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            cdSelecionado = null;
-            txtNome.Text = "";
-            txtCPF.Text = "";
-            dtpNascimento.Text = default;
-            txtTelefone.Text = "";
-            txtEndereco.Text = "";
+            limparCampos();
             txtNome.Focus();
+        }
+
+        private void tsMenuItemExcluir_Click(object sender, EventArgs e)
+        {
+            // Excluir registro pelo menu do botão direito
+
+            DialogResult escolha = MessageBox.Show($"Tem certeza que deseja excluir o registro?", 
+                                                    "Excluir", 
+                                                    MessageBoxButtons.YesNo,
+                                                    MessageBoxIcon.Warning);
+            if (escolha == DialogResult.Yes)
+            {
+                string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
+                MySqlConnection msconnection = new MySqlConnection(conexao);
+                msconnection.Open();
+                MySqlCommand mscommand = new MySqlCommand();
+                mscommand.Connection = msconnection;
+                mscommand.CommandText = $"DELETE FROM cadfuncionarios WHERE cdFunc = @cd";
+                mscommand.Parameters.AddWithValue("@cd", cdSelecionado.Value);
+                mscommand.Prepare();
+                mscommand.ExecuteNonQuery();
+                util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
+                limparCampos();
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            // Excluir registro pelo botão na tela
+
+            DialogResult escolha = MessageBox.Show($"Tem certeza que deseja excluir o registro?", 
+                                                    "Excluir", 
+                                                    MessageBoxButtons.YesNo,
+                                                    MessageBoxIcon.Warning);
+            if (escolha == DialogResult.Yes)
+            {
+                string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
+                MySqlConnection msconnection = new MySqlConnection(conexao);
+                msconnection.Open();
+                MySqlCommand mscommand = new MySqlCommand();
+                mscommand.Connection = msconnection;
+                mscommand.CommandText = $"DELETE FROM cadfuncionarios WHERE cdFunc = @cd";
+                mscommand.Parameters.AddWithValue("@cd", cdSelecionado.Value);
+                mscommand.Prepare();
+                mscommand.ExecuteNonQuery();
+                util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
+                limparCampos();
+            }
         }
     }
 }
