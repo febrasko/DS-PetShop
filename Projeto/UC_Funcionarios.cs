@@ -15,10 +15,14 @@ namespace PetShop
         {
             InitializeComponent();
         }
+
+        // Referenciando o arquivo onde tem a função abrirDgv()
         Util util = new Util();
+
         private void UC_Funcionarios_Load(object sender, EventArgs e)
         {
             util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
+            dgvFuncionarios.ClearSelection();
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
@@ -27,8 +31,9 @@ namespace PetShop
             {
                 MessageBox.Show("Preencha todos os campos!");
             }
-            else
+            else if (cdSelecionado == null)
             {
+                // insert
                 // Convertendo a data inserida para o formato do MySQL
                 string nascimento = dtpNascimento.Value.ToString("yyyy-MM-dd");
 
@@ -50,17 +55,63 @@ namespace PetShop
                 mscommand.Parameters.AddWithValue("@endereco", txtEndereco.Text);
                 mscommand.Prepare();
                 mscommand.ExecuteNonQuery();
-                
+
                 // Fechando conexão
                 msconnection.Close();
 
+                // Limpando os textboxes
+                txtNome.Text = "";
+                txtCPF.Text = "";
+                dtpNascimento.Text = default;
+                txtTelefone.Text = "";
+                txtEndereco.Text = "";
+
                 // Atualizando datagridview
+                util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
+            }
+            else
+            {
+                // update
+                string nascimento = dtpNascimento.Value.ToString("yyyy-MM-dd");
+
+                string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
+                MySqlConnection msconnection = new MySqlConnection(conexao);
+                msconnection.Open();
+
+                // Executando comando update
+                MySqlCommand mscommand = new MySqlCommand();
+                mscommand.Connection = msconnection;
+                mscommand.CommandText = $"UPDATE cadfuncionarios SET " +
+                    $"nmFunc = @nome, " +
+                    $"dtNascimento = @nascimento, " +
+                    $"cpf = @cpf, " +
+                    $"endereco = @endereco, " +
+                    $"tel = @tel " +
+                    $"WHERE cdFunc = @cd";
+                mscommand.Parameters.AddWithValue("@nome", txtNome.Text);
+                mscommand.Parameters.AddWithValue("@cpf", txtCPF.Text);
+                mscommand.Parameters.AddWithValue("@nascimento", nascimento);
+                mscommand.Parameters.AddWithValue("@tel", txtTelefone.Text);
+                mscommand.Parameters.AddWithValue("@endereco", txtEndereco.Text);
+                mscommand.Parameters.AddWithValue("@cd", cdSelecionado.Value);
+                mscommand.Prepare();
+                mscommand.ExecuteNonQuery();
+
+                msconnection.Close();
+
+                txtNome.Text = "";
+                txtCPF.Text = "";
+                dtpNascimento.Text = default;
+                txtTelefone.Text = "";
+                txtEndereco.Text = "";
+
                 util.abrirDgv(dgvFuncionarios, "cadfuncionarios");
             }
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
+            // Pesquisando registros dentro do datagridview por nome
             string conexao = @"Server=localhost;Database=pet_shop;Uid=root;Pwd=''";
             MySqlConnection msconnection = new MySqlConnection(conexao);
             msconnection.Open();
@@ -71,6 +122,38 @@ namespace PetShop
             MySqlDataAdapter msdAdapter = new MySqlDataAdapter(mscommand);
             msdAdapter.Fill(dt);
             dgvFuncionarios.DataSource = dt;
+        }
+
+        private void dgvFuncionarios_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Impedir que a tela se inicie com um registro já selecionado
+            dgvFuncionarios.ClearSelection();
+        }
+
+        private int? cdSelecionado = null;
+        private void dgvFuncionarios_CurrentCellChanged(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection linha_selecionada = dgvFuncionarios.SelectedRows;
+            foreach (DataGridViewRow campo in linha_selecionada)
+            {
+                txtNome.Text = campo.Cells[0].Value.ToString();
+                dtpNascimento.Text = campo.Cells[1].Value.ToString();
+                txtCPF.Text = campo.Cells[2].Value.ToString();
+                txtEndereco.Text = campo.Cells[3].Value.ToString();
+                txtTelefone.Text = campo.Cells[4].Value.ToString();
+                cdSelecionado = Convert.ToInt32(campo.Cells[5].Value);
+            }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            cdSelecionado = null;
+            txtNome.Text = "";
+            txtCPF.Text = "";
+            dtpNascimento.Text = default;
+            txtTelefone.Text = "";
+            txtEndereco.Text = "";
+            txtNome.Focus();
         }
     }
 }

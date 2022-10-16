@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
             this.btnEnviar = new System.Windows.Forms.Button();
@@ -43,6 +44,7 @@
             this.dtpNascimento = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,9 +59,19 @@
             this.dgvFuncionarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFuncionarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvFuncionarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFuncionarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFuncionarios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvFuncionarios.Location = new System.Drawing.Point(286, 47);
             this.dgvFuncionarios.Margin = new System.Windows.Forms.Padding(8, 3, 8, 3);
+            this.dgvFuncionarios.MultiSelect = false;
             this.dgvFuncionarios.Name = "dgvFuncionarios";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -74,6 +86,8 @@
             this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFuncionarios.Size = new System.Drawing.Size(499, 328);
             this.dgvFuncionarios.TabIndex = 8;
+            this.dgvFuncionarios.CurrentCellChanged += new System.EventHandler(this.dgvFuncionarios_CurrentCellChanged);
+            this.dgvFuncionarios.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvFuncionarios_DataBindingComplete);
             // 
             // btnEnviar
             // 
@@ -98,7 +112,7 @@
             this.txtCPF.Location = new System.Drawing.Point(90, 120);
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(100, 23);
-            this.txtCPF.TabIndex = 1;
+            this.txtCPF.TabIndex = 2;
             // 
             // label6
             // 
@@ -114,7 +128,7 @@
             this.txtNome.Location = new System.Drawing.Point(90, 92);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 23);
-            this.txtNome.TabIndex = 0;
+            this.txtNome.TabIndex = 1;
             // 
             // label5
             // 
@@ -165,7 +179,7 @@
             this.dtpNascimento.Location = new System.Drawing.Point(90, 148);
             this.dtpNascimento.Name = "dtpNascimento";
             this.dtpNascimento.Size = new System.Drawing.Size(102, 23);
-            this.dtpNascimento.TabIndex = 9;
+            this.dtpNascimento.TabIndex = 3;
             // 
             // label2
             // 
@@ -184,6 +198,16 @@
             this.txtPesquisa.TabIndex = 0;
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(125, 262);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(75, 25);
+            this.btnLimpar.TabIndex = 7;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // UC_Funcionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -191,6 +215,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Controls.Add(this.dtpNascimento);
             this.Controls.Add(this.dgvFuncionarios);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtEndereco);
@@ -228,5 +253,6 @@
         private System.Windows.Forms.DateTimePicker dtpNascimento;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }
