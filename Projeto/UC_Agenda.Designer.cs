@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtObs = new System.Windows.Forms.RichTextBox();
@@ -42,12 +43,19 @@
             this.cbTipo = new System.Windows.Forms.ComboBox();
             this.dgvAgenda = new System.Windows.Forms.DataGridView();
             this.dtpData = new System.Windows.Forms.DateTimePicker();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripExcluir = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtObs
             // 
-            this.txtObs.Location = new System.Drawing.Point(149, 197);
+            this.txtObs.Location = new System.Drawing.Point(120, 214);
             this.txtObs.Name = "txtObs";
             this.txtObs.Size = new System.Drawing.Size(171, 58);
             this.txtObs.TabIndex = 43;
@@ -55,9 +63,9 @@
             // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(91, 276);
+            this.btnEnviar.Location = new System.Drawing.Point(39, 286);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(75, 25);
+            this.btnEnviar.Size = new System.Drawing.Size(75, 23);
             this.btnEnviar.TabIndex = 41;
             this.btnEnviar.Text = "Enviar";
             this.btnEnviar.UseVisualStyleBackColor = true;
@@ -65,14 +73,14 @@
             // 
             // txtNomeAnimal
             // 
-            this.txtNomeAnimal.Location = new System.Drawing.Point(149, 107);
+            this.txtNomeAnimal.Location = new System.Drawing.Point(120, 106);
             this.txtNomeAnimal.Name = "txtNomeAnimal";
             this.txtNomeAnimal.Size = new System.Drawing.Size(121, 23);
             this.txtNomeAnimal.TabIndex = 39;
             // 
             // txtNomeResp
             // 
-            this.txtNomeResp.Location = new System.Drawing.Point(149, 77);
+            this.txtNomeResp.Location = new System.Drawing.Point(120, 70);
             this.txtNomeResp.Name = "txtNomeResp";
             this.txtNomeResp.Size = new System.Drawing.Size(171, 23);
             this.txtNomeResp.TabIndex = 40;
@@ -80,17 +88,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 167);
+            this.label5.Location = new System.Drawing.Point(83, 181);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 15);
+            this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 32;
-            this.label5.Text = "Data de agendamento";
+            this.label5.Text = "Data";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 139);
+            this.label3.Location = new System.Drawing.Point(27, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 15);
             this.label3.TabIndex = 34;
@@ -100,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 111);
+            this.label4.Location = new System.Drawing.Point(18, 109);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 15);
             this.label4.TabIndex = 35;
@@ -110,17 +118,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 83);
+            this.label1.Location = new System.Drawing.Point(42, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 15);
+            this.label1.Size = new System.Drawing.Size(72, 15);
             this.label1.TabIndex = 37;
-            this.label1.Text = "Nome do responsável";
+            this.label1.Text = "Responsável";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(69, 195);
+            this.label6.Location = new System.Drawing.Point(40, 217);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 15);
             this.label6.TabIndex = 32;
@@ -134,7 +142,7 @@
             this.cbTipo.Items.AddRange(new object[] {
             "Banho",
             "Tosa"});
-            this.cbTipo.Location = new System.Drawing.Point(149, 137);
+            this.cbTipo.Location = new System.Drawing.Point(120, 142);
             this.cbTipo.Name = "cbTipo";
             this.cbTipo.Size = new System.Drawing.Size(121, 23);
             this.cbTipo.TabIndex = 44;
@@ -152,9 +160,12 @@
             this.dgvAgenda.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvAgenda.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAgenda.Location = new System.Drawing.Point(331, 21);
+            this.dgvAgenda.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvAgenda.Location = new System.Drawing.Point(302, 53);
             this.dgvAgenda.Margin = new System.Windows.Forms.Padding(8, 3, 8, 3);
+            this.dgvAgenda.MultiSelect = false;
             this.dgvAgenda.Name = "dgvAgenda";
+            this.dgvAgenda.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -171,22 +182,81 @@
             this.dgvAgenda.RowTemplate.Height = 25;
             this.dgvAgenda.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAgenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAgenda.Size = new System.Drawing.Size(454, 336);
+            this.dgvAgenda.Size = new System.Drawing.Size(483, 322);
             this.dgvAgenda.TabIndex = 47;
+            this.dgvAgenda.CurrentCellChanged += new System.EventHandler(this.dgvAgenda_CurrentCellChanged);
+            this.dgvAgenda.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvAgenda_DataBindingComplete);
             // 
             // dtpData
             // 
             this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpData.Location = new System.Drawing.Point(149, 166);
+            this.dtpData.Location = new System.Drawing.Point(120, 178);
             this.dtpData.Name = "dtpData";
             this.dtpData.Size = new System.Drawing.Size(121, 23);
             this.dtpData.TabIndex = 48;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(201, 286);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 50;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Visible = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(120, 286);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpar.TabIndex = 49;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Location = new System.Drawing.Point(365, 19);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.PlaceholderText = "Nome do responsável";
+            this.txtPesquisa.Size = new System.Drawing.Size(180, 23);
+            this.txtPesquisa.TabIndex = 51;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(302, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.TabIndex = 52;
+            this.label2.Text = "Pesquisar";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripExcluir});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(110, 26);
+            // 
+            // toolStripExcluir
+            // 
+            this.toolStripExcluir.Name = "toolStripExcluir";
+            this.toolStripExcluir.Size = new System.Drawing.Size(109, 22);
+            this.toolStripExcluir.Text = "Excluir";
+            this.toolStripExcluir.Click += new System.EventHandler(this.toolStripExcluir_Click);
             // 
             // UC_Agenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Controls.Add(this.txtPesquisa);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.dtpData);
             this.Controls.Add(this.dgvAgenda);
             this.Controls.Add(this.cbTipo);
@@ -203,6 +273,7 @@
             this.Size = new System.Drawing.Size(793, 378);
             this.Load += new System.EventHandler(this.UC_Agenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +293,11 @@
         private System.Windows.Forms.ComboBox cbTipo;
         private System.Windows.Forms.DataGridView dgvAgenda;
         private System.Windows.Forms.DateTimePicker dtpData;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripExcluir;
     }
 }

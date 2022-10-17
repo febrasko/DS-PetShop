@@ -131,7 +131,7 @@
             // 
             this.txtCPF.Location = new System.Drawing.Point(90, 105);
             this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(100, 23);
+            this.txtCPF.Size = new System.Drawing.Size(147, 23);
             this.txtCPF.TabIndex = 2;
             // 
             // label6
@@ -147,7 +147,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(90, 77);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(100, 23);
+            this.txtNome.Size = new System.Drawing.Size(147, 23);
             this.txtNome.TabIndex = 1;
             // 
             // label5
@@ -190,7 +190,7 @@
             // 
             this.txtTelefone.Location = new System.Drawing.Point(90, 162);
             this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(102, 23);
+            this.txtTelefone.Size = new System.Drawing.Size(149, 23);
             this.txtTelefone.TabIndex = 4;
             // 
             // dtpNascimento
@@ -198,7 +198,7 @@
             this.dtpNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNascimento.Location = new System.Drawing.Point(90, 133);
             this.dtpNascimento.Name = "dtpNascimento";
-            this.dtpNascimento.Size = new System.Drawing.Size(102, 23);
+            this.dtpNascimento.Size = new System.Drawing.Size(149, 23);
             this.dtpNascimento.TabIndex = 3;
             // 
             // label2
